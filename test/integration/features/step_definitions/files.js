@@ -12,9 +12,28 @@ module.exports = function () {
   });
 
   this.Then(/^the core files should be present$/, function (callback) {
-    assert.file(['.gitattributes']);
+    assert.file([
+      '.gitattributes',
+      '.editorconfig'
+    ]);
 
     assert.fileContent('.gitattributes', /^\* text=auto\n$/);
+    assert.fileContent(
+      '.editorconfig',
+      `# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+`
+    );
 
     callback();
   });
