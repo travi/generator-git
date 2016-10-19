@@ -1,0 +1,32 @@
+{
+  "name": "@travi/generator-git",
+  "version": "1.0.0",
+  "description": "yeoman generator for simple git repositories",
+  "scripts": {
+    "tests:integration": "cucumber.js test/integration/features",
+    "test": "run-s tests:*"
+  },
+  "files": [
+    "generators/git"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travi/generator-git.git"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Matt Travi <npm@travi.org> (https://matt.travi.org/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travi/generator-git/issues"
+  },
+  "homepage": "https://github.com/travi/generator-git#readme",
+  "dependencies": {
+    "yeoman-generator": "0.24.1"
+  },
+  "devDependencies": {
+    "cucumber": "1.3.1",
+    "npm-run-all": "3.1.1"
+  }
+}
