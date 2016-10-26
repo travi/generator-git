@@ -6,7 +6,7 @@ var tempDir = path.join(__dirname, 'temp');
 
 module.exports = function () {
   this.When(/^the generator is run$/, function (callback) {
-    helpers.run(path.join(__dirname, '../../../../generators/git'))
+    helpers.run(path.join(__dirname, '../../../../app'))
       .inDir(tempDir)
       .on('end', callback);
   });

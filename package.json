@@ -8,7 +8,7 @@
     "postpublish": "greenkeeper-postpublish"
   },
   "files": [
-    "generators/git"
+    "app"
   ],
   "repository": {
     "type": "git",
