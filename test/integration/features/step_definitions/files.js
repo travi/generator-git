@@ -14,7 +14,8 @@ module.exports = function () {
   this.Then(/^the core files should be present$/, function (callback) {
     assert.file([
       '.gitattributes',
-      '.editorconfig'
+      '.editorconfig',
+      'README.md'
     ]);
 
     assert.fileContent('.gitattributes', /^\* text=auto\n$/);
@@ -34,6 +35,7 @@ end_of_line = lf
 insert_final_newline = true
 `
     );
+    assert.fileContent('README.md', `# project-name`);
 
     callback();
   });
