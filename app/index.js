@@ -6,9 +6,9 @@ module.exports = yeoman.Base.extend({
       name: 'projectName',
       message: 'foo',
       default: ''
-    }]).then(function (props) {
+    }]).then((props) => {
       this.projectName = props.projectName;
-    }.bind(this));
+    });
   },
 
   configuring() {
