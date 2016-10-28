@@ -5,7 +5,7 @@ module.exports = yeoman.Base.extend({
     return this.prompt([{
       name: 'projectName',
       message: 'foo',
-      default: ''
+      default: 'default'
     }]).then((props) => {
       this.projectName = props.projectName;
     });
