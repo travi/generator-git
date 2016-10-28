@@ -1,9 +1,10 @@
 var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
 var path = require('path');
-var any = require('@travi/any')
+var any = require('@travi/any');
 
-var tempDir = path.join(__dirname, 'temp');
+var tempDirName = `${any.word()}-${any.word()}`;
+var tempDir = path.join(__dirname, tempDirName);
 
 module.exports = function () {
   let answers;
@@ -64,7 +65,7 @@ insert_final_newline = true
   });
 
   this.Then(/^the default answers should be used$/, function (callback) {
-    assert.fileContent('README.md', `# default\n`);
+    assert.fileContent('README.md', `# ${tempDirName}\n`);
 
     callback();
   });
