@@ -6,12 +6,24 @@ module.exports = yeoman.Base.extend({
   },
 
   prompting() {
-    return this.prompt([{
-      name: 'projectName',
-      message: 'foo',
-      default: this.appname
-    }]).then((props) => {
+    return this.prompt([
+      {
+        name: 'projectName',
+        message: 'foo',
+        default: this.appname
+      },
+      {
+        name: 'copyrightYear',
+        default: new Date().getFullYear()
+      },
+      {
+        name: 'fullName',
+        default: 'Matt Travi'
+      }
+    ]).then((props) => {
       this.projectName = props.projectName;
+      this.copyrightYear = props.copyrightYear;
+      this.fullName = props.fullName;
     });
   },
 
@@ -22,5 +34,6 @@ module.exports = yeoman.Base.extend({
 
   app() {
     this.template('_README.md', 'README.md');
+    this.template('licenses/MIT', 'LICENSE');
   }
 });
