@@ -2,6 +2,8 @@ var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
 var path = require('path');
 var any = require('@travi/any');
+var sinon = require('sinon');
+var gitConfig = require('git-config');
 
 var tempDirName = `${any.word()}-${any.word()}`;
 var tempDir = path.join(__dirname, tempDirName);
@@ -32,10 +34,19 @@ SOFTWARE.
 }
 
 module.exports = function () {
-  let answers;
+  let answers, sandbox;
+  const name = `${any.word()} ${any.word()}`;
 
   this.Before(() => {
     answers = {};
+    sandbox = sinon.sandbox.create();
+    sandbox.stub(gitConfig, 'sync').returns({
+      user: {name}
+    });
+  });
+
+  this.After(() => {
+    sandbox.restore();
   });
 
   this.Given(/^the user reponds to all prompts$/, function (callback) {
@@ -97,7 +108,7 @@ insert_final_newline = true
 
   this.Then(/^the default answers should be used$/, function (callback) {
     assert.fileContent('README.md', `# ${tempDirName}\n`);
-    assert.fileContent('LICENSE', mitLicenseWith(new Date().getFullYear(), 'Matt Travi'));
+    assert.fileContent('LICENSE', mitLicenseWith(new Date().getFullYear(), name));
 
     callback();
   });

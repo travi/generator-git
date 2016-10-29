@@ -1,4 +1,5 @@
 const yeoman = require('yeoman-generator');
+const gitConfig = require('git-config');
 
 module.exports = yeoman.Base.extend({
   initializing() {
@@ -18,7 +19,7 @@ module.exports = yeoman.Base.extend({
       },
       {
         name: 'fullName',
-        default: 'Matt Travi'
+        default: gitConfig.sync().user.name
       }
     ]).then((props) => {
       this.projectName = props.projectName;
