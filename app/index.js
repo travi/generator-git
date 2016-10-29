@@ -10,14 +10,16 @@ module.exports = yeoman.Base.extend({
     return this.prompt([
       {
         name: 'projectName',
-        message: 'foo',
+        message: 'What is the name of this project?',
         default: this.appname
       },
       {
+        message: 'What year should be used in the license?',
         name: 'copyrightYear',
         default: new Date().getFullYear()
       },
       {
+        message: 'What is your full name',
         name: 'fullName',
         default: gitConfig.sync().user.name
       }
