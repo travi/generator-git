@@ -1,6 +1,6 @@
 {
   "name": "@travi/generator-git",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "yeoman generator for simple git repositories",
   "scripts": {
     "clean": "rimraf test/integration/features/step_definitions/temp/**/",
