@@ -72,6 +72,7 @@ module.exports = function () {
 
   this.Then(/^the core files should be present$/, function (callback) {
     assert.file([
+      '.git/',
       '.gitattributes',
       '.editorconfig',
       'README.md',

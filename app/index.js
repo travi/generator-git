@@ -4,6 +4,7 @@ const gitConfig = require('git-config');
 module.exports = yeoman.Base.extend({
   initializing() {
     this.appname = this.appname.replace(/\s+/g, '-');
+    this.spawnCommandSync('git', ['init', '--quiet']);
   },
 
   prompting() {
