@@ -6,7 +6,7 @@ var sinon = require('sinon');
 var gitConfig = require('git-config');
 
 var tempDirName = `${any.word()}-${any.word()}`;
-var tempDir = path.join(__dirname, tempDirName);
+var tempDir = path.join(__dirname, `temp/${tempDirName}`);
 
 function mitLicenseWith(copyrightYear, fullName) {
   return `MIT License
