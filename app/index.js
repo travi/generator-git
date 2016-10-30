@@ -1,9 +1,10 @@
 const yeoman = require('yeoman-generator');
 const gitConfig = require('git-config');
+const _ = require('lodash');
 
 module.exports = yeoman.Base.extend({
   initializing() {
-    this.appname = this.appname.replace(/\s+/g, '-');
+    this.projectName = _.kebabCase(this.appname);
     this.spawnCommandSync('git', ['init', '--quiet']);
   },
 
@@ -12,7 +13,7 @@ module.exports = yeoman.Base.extend({
       {
         name: 'projectName',
         message: 'What is the name of this project?',
-        default: this.appname
+        default: this.projectName
       },
       {
         message: 'What year should be used in the license?',
