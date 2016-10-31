@@ -113,4 +113,13 @@ insert_final_newline = true
 
     callback();
   });
+
+  this.Then(/^reusable prompt answers are persisted$/, function (callback) {
+    assert.jsonFileContent(`${tempDir}/.yo-rc.json`, {"@travi/generator-git": {
+      projectName: answers.projectName,
+      userFullName: answers.fullName
+    }});
+
+    callback();
+  });
 };

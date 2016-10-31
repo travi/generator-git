@@ -29,6 +29,11 @@ module.exports = yeoman.Base.extend({
       this.projectName = props.projectName;
       this.copyrightYear = props.copyrightYear;
       this.fullName = props.fullName;
+
+      this.config.set({
+        projectName: this.projectName,
+        userFullName: this.fullName
+      });
     });
   },
 
