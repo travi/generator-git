@@ -117,7 +117,8 @@ insert_final_newline = true
   this.Then(/^reusable prompt answers are persisted$/, function (callback) {
     assert.jsonFileContent(`${tempDir}/.yo-rc.json`, {"@travi/generator-git": {
       projectName: answers.projectName,
-      userFullName: answers.fullName
+      userFullName: answers.fullName,
+      license: 'MIT'
     }});
 
     callback();

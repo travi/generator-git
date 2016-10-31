@@ -16,6 +16,13 @@ module.exports = yeoman.Base.extend({
         default: this.projectName
       },
       {
+        name: 'license',
+        message: 'How should this project be licensed?',
+        type: 'list',
+        choices: ['MIT'],
+        default: 'MIT'
+      },
+      {
         message: 'What year should be used in the license?',
         name: 'copyrightYear',
         default: new Date().getFullYear()
@@ -32,7 +39,8 @@ module.exports = yeoman.Base.extend({
 
       this.config.set({
         projectName: this.projectName,
-        userFullName: this.fullName
+        userFullName: this.fullName,
+        license: props.license
       });
     });
   },
