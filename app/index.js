@@ -19,7 +19,7 @@ module.exports = yeoman.Base.extend({
         name: 'license',
         message: 'How should this project be licensed?',
         type: 'list',
-        choices: ['MIT'],
+        choices: ['UNLICENSED', 'MIT'],
         default: 'MIT'
       },
       {
@@ -36,11 +36,12 @@ module.exports = yeoman.Base.extend({
       this.projectName = props.projectName;
       this.copyrightYear = props.copyrightYear;
       this.fullName = props.fullName;
+      this.license = props.license;
 
       this.config.set({
         projectName: this.projectName,
         userFullName: this.fullName,
-        license: props.license
+        license: this.license
       });
     });
   },
@@ -52,6 +53,9 @@ module.exports = yeoman.Base.extend({
 
   app() {
     this.template('_README.md', 'README.md');
-    this.template('licenses/MIT', 'LICENSE');
+
+    if (this.license !== 'UNLICENSED') {
+      this.template('licenses/MIT', 'LICENSE');
+    }
   }
 });
