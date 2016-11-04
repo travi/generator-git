@@ -27,10 +27,4 @@ module.exports = function () {
 
     callback();
   });
-
-  this.Then(/^the license choice should be persisted$/, function (callback) {
-    assert.equal(require(`${this.tempDir}/.yo-rc.json`)['@travi/generator-git'].license, this.answers.license);
-
-    callback();
-  });
 };

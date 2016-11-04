@@ -78,14 +78,4 @@ insert_final_newline = true
 
     callback();
   });
-
-  this.Then(/^reusable prompt answers are persisted$/, function (callback) {
-    assert.jsonFileContent(`${this.tempDir}/.yo-rc.json`, {"@travi/generator-git": {
-      projectName: this.answers.projectName,
-      userFullName: this.answers.fullName,
-      license: 'MIT'
-    }});
-
-    callback();
-  });
 };

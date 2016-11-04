@@ -38,11 +38,7 @@ module.exports = yeoman.Base.extend({
       this.fullName = props.fullName;
       this.license = props.license;
 
-      this.config.set({
-        projectName: this.projectName,
-        userFullName: this.fullName,
-        license: this.license
-      });
+      _.merge(this.options, props);
     });
   },
 
