@@ -1,19 +1,20 @@
 {
   "name": "@travi/generator-git",
-  "version": "1.4.1",
+  "version": "0.0.0-semantically-released",
   "description": "yeoman generator for simple git repositories",
   "scripts": {
     "clean": "rimraf test/integration/features/step_definitions/temp/**/",
     "tests:integration": "cucumber.js test/integration/features",
     "test": "run-s tests:*",
-    "postpublish": "greenkeeper-postpublish"
+    "postpublish": "greenkeeper-postpublish",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "files": [
     "app"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/travi/generator-git.git"
+    "url": "https://github.com/travi/generator-git.git"
   },
   "keywords": [
     "yeoman-generator"
@@ -35,6 +36,7 @@
     "greenkeeper-postpublish": "1.0.1",
     "npm-run-all": "3.1.1",
     "rimraf": "2.5.4",
-    "sinon": "2.0.0-pre.4"
+    "sinon": "2.0.0-pre.4",
+    "semantic-release": "6.3.2"
   }
 }
