@@ -28,7 +28,7 @@ module.exports = yeoman.Base.extend({
         default: new Date().getFullYear()
       },
       {
-        message: 'What is your full name',
+        message: 'What is the full name of this project\'s author?',
         name: 'fullName',
         default: gitConfig.sync().user.name
       }
