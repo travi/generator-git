@@ -1,5 +1,7 @@
 # generator-git
 
+[![npm](https://img.shields.io/npm/v/@travi/generator-git.svg?maxAge=2592000)](https://www.npmjs.com/package/@travi/generator-git)
+[![license](https://img.shields.io/github/license/travi/generator-git.svg)](LICENSE)
 [![Build Status](https://img.shields.io/travis/travi/generator-git/master.svg?style=flat)](https://travis-ci.org/travi/generator-git)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
