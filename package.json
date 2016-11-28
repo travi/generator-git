@@ -6,6 +6,8 @@
     "clean": "rimraf test/integration/features/step_definitions/temp/**/",
     "tests:integration": "cucumber.js test/integration/features",
     "test": "run-s tests:*",
+    "precommit": "npm test",
+    "commitmsg": "validate-commit-msg",
     "postpublish": "greenkeeper-postpublish",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -33,10 +35,18 @@
   "devDependencies": {
     "@travi/any": "0.7.0",
     "cucumber": "2.0.0-rc.1",
+    "cz-conventional-changelog": "1.2.0",
     "greenkeeper-postpublish": "1.0.1",
+    "husky": "0.11.9",
     "npm-run-all": "3.1.1",
     "rimraf": "2.5.4",
+    "semantic-release": "6.3.2",
     "sinon": "2.0.0-pre.4",
-    "semantic-release": "6.3.2"
+    "validate-commit-msg": "2.8.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
