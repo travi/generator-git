@@ -29,7 +29,7 @@
   "homepage": "https://github.com/travi/generator-git#readme",
   "dependencies": {
     "git-config": "0.0.7",
-    "lodash": "4.17.2",
+    "lodash": "4.17.3",
     "yeoman-generator": "0.24.1"
   },
   "devDependencies": {
