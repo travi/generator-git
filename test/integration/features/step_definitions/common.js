@@ -1,26 +1,28 @@
 var path = require('path');
 var helpers = require('yeoman-test');
 var any = require('@travi/any');
+const defineSupportCode = require('cucumber').defineSupportCode;
+const World = require('../support/world').World;
 
-module.exports = function () {
-  this.World = require('../support/world.js').World;
+defineSupportCode(({Before, After, When, setWorldConstructor}) => {
+  setWorldConstructor(World);
 
-  this.Before(function () {
+  Before(function () {
     this.tempDirName = `${any.word()}-${any.word()}`;
     this.tempDir = path.join(__dirname, `temp/${this.tempDirName}`);
     this.answers = {};
     this.options = {};
   });
 
-  this.After(function () {
+  After(function () {
     this.answers = {};
   });
 
-  this.When(/^the generator is run$/, function (callback) {
+  When(/^the generator is run$/, function (callback) {
     helpers.run(path.join(__dirname, '../../../../app'))
       .inDir(this.tempDir)
       .withOptions(this.options)
       .withPrompts(this.answers)
       .on('end', callback);
   });
-};
+});

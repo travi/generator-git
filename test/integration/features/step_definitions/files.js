@@ -2,26 +2,27 @@ var assert = require('yeoman-assert');
 var any = require('@travi/any');
 var sinon = require('sinon');
 var gitConfig = require('git-config');
+const defineSupportCode = require('cucumber').defineSupportCode;
+const World = require('../support/world').World;
 
-
-module.exports = function () {
-  this.World = require('../support/world.js').World;
+defineSupportCode(({Before, After, Given, Then, setWorldConstructor}) => {
+  setWorldConstructor(World);
 
   let sandbox;
   const name = `${any.word()} ${any.word()}`;
 
-  this.Before(() => {
+  Before(() => {
     sandbox = sinon.sandbox.create();
     sandbox.stub(gitConfig, 'sync').returns({
       user: {name}
     });
   });
 
-  this.After(() => {
+  After(() => {
     sandbox.restore();
   });
 
-  this.Given(/^the user responds to all prompts$/, function (callback) {
+  Given(/^the user responds to all prompts$/, function (callback) {
     this.answers = Object.assign({}, this.answers, {
       projectName: any.word(),
       copyrightYear: any.integer(),
@@ -31,11 +32,11 @@ module.exports = function () {
     callback();
   });
 
-  this.Given(/^the user leaves defaults in all prompts$/, function (callback) {
+  Given(/^the user leaves defaults in all prompts$/, function (callback) {
     callback();
   });
 
-  this.Then(/^the core files should be present$/, function (callback) {
+  Then(/^the core files should be present$/, function (callback) {
     assert.file([
       '.git/',
       '.gitattributes',
@@ -65,17 +66,17 @@ insert_final_newline = true
     callback();
   });
 
-  this.Then(/^the user provided answers should be used$/, function (callback) {
+  Then(/^the user provided answers should be used$/, function (callback) {
     assert.fileContent('README.md', `# ${this.answers.projectName}\n`);
     assert.fileContent('LICENSE', this.mitLicenseWith(this.answers.copyrightYear, this.answers.fullName));
 
     callback();
   });
 
-  this.Then(/^the default answers should be used$/, function (callback) {
+  Then(/^the default answers should be used$/, function (callback) {
     assert.fileContent('README.md', `# ${this.tempDirName}\n`);
     assert.fileContent('LICENSE', this.mitLicenseWith(new Date().getFullYear(), name));
 
     callback();
   });
-};
+});
