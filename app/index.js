@@ -1,12 +1,16 @@
-const yeoman = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const gitConfig = require('git-config');
 const _ = require('lodash');
 
-module.exports = yeoman.Base.extend({
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+  }
+
   initializing() {
     this.projectName = _.kebabCase(this.appname);
     this.spawnCommandSync('git', ['init', '--quiet']);
-  },
+  }
 
   prompting() {
     return this.prompt([
@@ -40,18 +44,29 @@ module.exports = yeoman.Base.extend({
 
       _.merge(this.options, props);
     });
-  },
+  }
 
   configuring() {
-    this.copy('gitattributes', '.gitattributes');
-    this.copy('editorconfig', '.editorconfig');
-  },
+    this.fs.copyTpl(this.templatePath('gitattributes'), this.destinationPath('.gitattributes'));
+    this.fs.copyTpl(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
+  }
 
   app() {
-    this.template('_README.md', 'README.md');
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md'),
+      {projectName: this.projectName}
+    );
 
     if (this.license !== 'UNLICENSED') {
-      this.template('licenses/MIT', 'LICENSE');
+      this.fs.copyTpl(
+        this.templatePath('licenses/MIT'),
+        this.destinationPath('LICENSE'),
+        {
+          copyrightYear: this.copyrightYear,
+          fullName: this.fullName
+        }
+      );
     }
   }
-});
+};
