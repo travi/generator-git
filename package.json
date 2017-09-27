@@ -32,7 +32,7 @@
     "yeoman-generator": "2.0.0"
   },
   "devDependencies": {
-    "@travi/any": "1.4.2",
+    "@travi/any": "1.4.3",
     "cucumber": "3.0.2",
     "cz-conventional-changelog": "2.0.0",
     "husky": "0.14.3",
