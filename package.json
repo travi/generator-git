@@ -29,7 +29,7 @@
   "dependencies": {
     "git-config": "0.0.7",
     "lodash": "4.17.5",
-    "yeoman-generator": "2.0.2"
+    "yeoman-generator": "2.0.3"
   },
   "devDependencies": {
     "@travi/any": "1.7.2",
